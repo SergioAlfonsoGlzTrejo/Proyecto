@@ -30,16 +30,16 @@
       <input type="text" id="apellidos" name="apellidos" required>
    </fieldset>
    <fieldset>
-      <label for="edad">Edad</label>
-      <input type="number" id="edad" name="edad" min="1">
-   </fieldset>
-   <fieldset>
       <label for="fecha_nacimiento">Fecha de nacimiento</label>
       <input type="date" name="fecha_nacimiento" id="fecha_nacimiento">
    </fieldset>
    <fieldset>
       <label for="correo">Correo electrónico</label>
       <input type="text" id="correo" name="correo" required>
+   </fieldset>
+   <fieldset>
+      <label for="password">Contraseña</label>
+      <input type="password" name="password" id="password" required />
    </fieldset>
    <fieldset>
       <button type="submit">

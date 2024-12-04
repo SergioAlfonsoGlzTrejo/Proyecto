@@ -1,4 +1,7 @@
 <?php
+   session_start();
+   if (!isset($_SESSION['user'])) header('Location: login.php');
+
    require_once "db.php";
    $sql = "SELECT * FROM vista_usuarios";
    $query = $pdo->query($sql);
@@ -24,6 +27,10 @@
    <?php elseif(isset($_GET) && $_GET['ok']==3): ?>
       <article>
          ✅ Usuario eliminado con éxito 
+      </article>
+   <?php elseif(isset($_GET)): ?>   
+      <article>
+         ✅ Sesión iniciada correctamente
       </article>
    <?php endif; ?>
    <div class="overflow-auto">
