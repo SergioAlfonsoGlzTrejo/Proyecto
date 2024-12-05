@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'db.php';
+require '../../model/db.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $correo = $_POST['correo'];
@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   if ($user && password_verify($password, $user['password'])) {
     $_SESSION['user'] = $user;
-    header('Location: usuarios.php');
+    header('Location: ../../view/principal/usuarios.php');
   } else {
     header('Location: login.php?error=1');
   }

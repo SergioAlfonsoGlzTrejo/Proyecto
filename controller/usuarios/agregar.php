@@ -1,5 +1,5 @@
 <?php
-   include_once "db.php";
+   include_once "../../model/db.php";
 
    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $nombre = $_POST['nombre'] ?? null;
@@ -10,17 +10,17 @@
       $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
       if(empty($nombre) || empty($edad) || empty($correo)) {
-         header("Location: formulario.php?error=1");
+         header("Location: ../../view/principal/formulario.php?error=1");
          exit;
       }
 
       if(!is_numeric($edad) || $edad < 18) {
-         header("Location: formulario.php?error=2");
+         header("Location: ../../view/principal/formulario.php?error=2");
          exit;
       }
 
       if(!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
-         header("Location: formulario.php?error=3");
+         header("Location: ../../view/principal/formulario.php?error=3");
          exit;
       }
 
@@ -35,7 +35,7 @@
             ':correo' => $correo,
             ':password' => $password,
          ]);
-         header("Location: usuarios.php?ok=1");
+         header("Location: ../../view/principal/usuarios.php?ok=1");
          exit;
       } catch (PDOException $e) {
          die("Error al guardar el usuario: " . $e->getMessage());

@@ -1,5 +1,5 @@
 <?php
-   include_once "header.php";
+   include_once "../plantillas/header.php";
 ?>
 
 <?php if(isset($_GET) && $_GET['error']): ?>
@@ -20,7 +20,7 @@
    </article>
 <?php endif; ?>
 
-<form action="agregar.php" method="post">
+<form action="../../controller/usuarios/agregar.php" method="post">
    <fieldset>
       <label for="nombre">Nombre</label>
       <input type="text" id="nombre" name="nombre" required>
@@ -42,13 +42,10 @@
       <input type="password" name="password" id="password" required />
    </fieldset>
    <fieldset>
-      <button type="submit">
-         <i class="ph ph-paper-plane-right"></i>
-         Enviar
-      </button>
+      <button type="submit"><i class="ph ph-paper-plane-right"></i>Enviar</button>
    </fieldset>
 </form>
 
 <?php
-   include_once "footer.php";
+   include_once "../plantillas/footer.php";
 ?>
