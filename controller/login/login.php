@@ -16,6 +16,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $_SESSION['user'] = $user;
     header('Location: ../../view/principal/usuarios.php');
   } else {
-    header('Location: login.php?error=1');
+    header('Location: ../../view/login/iniciar_sesion.php?error=1');
   }
 }
