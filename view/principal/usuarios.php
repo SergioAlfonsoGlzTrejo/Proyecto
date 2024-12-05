@@ -1,5 +1,8 @@
 <?php
-   require_once "db.php";
+   session_start();
+   if (!isset($_SESSION['user'])) header('Location: login.php');
+
+   require_once "../../model/db.php";
    $sql = "SELECT * FROM vista_usuarios";
    $query = $pdo->query($sql);
    $query->execute();
@@ -8,7 +11,7 @@
 
    $titulo = "Gestor de usuarios";
    
-   include_once "header.php";
+   include_once "../plantillas/header.php";
 ?>
 <article>
    <h2>Lista de usuarios</h2>
@@ -24,6 +27,10 @@
    <?php elseif(isset($_GET) && $_GET['ok']==3): ?>
       <article>
          ✅ Usuario eliminado con éxito 
+      </article>
+   <?php elseif(isset($_GET)): ?>   
+      <article>
+         ✅ Sesión iniciada correctamente
       </article>
    <?php endif; ?>
    <div class="overflow-auto">
@@ -47,7 +54,7 @@
                   <td><?= $item['edad'] ?></td>
                   <td><?= $item['fecha_nacimiento'] ?></td>
                   <td><?= $item['correo'] ?></td>
-                  <td><a href="eliminar.php?id=<?= $item['id'] ?>" role="button">Eliminar</a></td>
+                  <td><a href="../../controller/usuarios/eliminar.php?id=<?= $item['id'] ?>" role="button">Eliminar</a></td>
                </tr>
             <?php endforeach; ?>
          </tbody>
@@ -55,5 +62,5 @@
    </div>
 </article>
 <?php
-   include_once "footer.php";
+   include_once "../plantillas/footer.php";
 ?>
