@@ -44,7 +44,7 @@
       <input type="password" name="password" id="password" required />
    </fieldset>
    <fieldset>
-      <button type="submit"><i class="ph ph-paper-plane-right"></i>Enviar</button>
+      <button type="submit"><i class="ph ph-paper-plane-right"></i> Enviar</button>
    </fieldset>
 </form>
 
