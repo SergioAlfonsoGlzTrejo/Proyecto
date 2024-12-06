@@ -1,28 +1,48 @@
 <?php
-   require_once "header.php";
-   // Aquí deberías consultar la base de datos para obtener los productos
-   $productos = [
-       ['id' => 1, 'nombre' => 'Producto 1', 'precio' => 100, 'imagen' => 'producto1.jpg'],
-       ['id' => 2, 'nombre' => 'Producto 2', 'precio' => 150, 'imagen' => 'producto2.jpg'],
-       // Más productos...
-   ];
+// Conexión a la base de datos
+require_once 'db.php';
+
+// Obtener productos de la base de datos
+$sql = "SELECT * FROM productos";
+$query = $pdo->query($sql);
+$productos = $query->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<section class="productos">
-    <h2>Catálogo de Productos</h2>
-    <div class="productos-lista">
-        <?php foreach ($productos as $producto): ?>
-            <div class="producto">
-                <img src="assets/images/<?= $producto['imagen'] ?>" alt="<?= $producto['nombre'] ?>">
-                <h3><?= $producto['nombre'] ?></h3>
-                <p>$<?= $producto['precio'] ?></p>
-                <a href="producto-detalle.php?id=<?= $producto['id'] ?>" class="ver-detalle">Ver detalle</a>
-                <button class="agregar-carrito">Añadir al carrito</button>
-            </div>
-        <?php endforeach; ?>
-    </div>
-</section>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Shop - Catálogo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Encabezado -->
+    <?php include 'view/plantillas/header.php'; ?>
 
-<?php
-   require_once "footer.php";
-?>
+    <!-- Contenido principal -->
+    <main>
+        <h2>Catálogo de Productos</h2>
+        <div class="productos">
+            <?php foreach ($productos as $producto): ?>
+                <div class="producto">
+                    <img src="productos/<?php echo $producto['imagen']; ?>" alt="<?php echo $producto['nombre']; ?>">
+                    <h3><?php echo $producto['nombre']; ?></h3>
+                    <p>$<?php echo number_format($producto['precio'], 2); ?></p>
+                    <form action="carrito.php" method="POST" style="display:inline;">
+                        <input type="hidden" name="id_producto" value="<?php echo $producto['id']; ?>">
+                        <button type="submit">Añadir al carrito</button>
+                    </form>
+                    <form action="comprar.php" method="POST" style="display:inline;">
+                        <input type="hidden" name="id_producto" value="<?php echo $producto['id']; ?>">
+                        <button type="submit">Comprar ahora</button>
+                    </form>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </main>
+
+    <!-- Pie de página -->
+    <?php include 'view/plantillas/footer.php'; ?>
+</body>
+</html>
