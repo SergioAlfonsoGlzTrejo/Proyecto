@@ -1,4 +1,5 @@
 <?php
+   session_start();
    include_once "../plantillas/header.php";
 ?>
 
@@ -20,6 +21,7 @@
    </article>
 <?php endif; ?>
 
+<h2 style="text-align: center;">Regístrate</h2>
 <form action="../../controller/usuarios/agregar.php" method="post">
    <fieldset>
       <label for="nombre">Nombre</label>
@@ -42,7 +44,7 @@
       <input type="password" name="password" id="password" required />
    </fieldset>
    <fieldset>
-      <button type="submit"><i class="ph ph-paper-plane-right"></i>Enviar</button>
+      <button type="submit"><i class="ph ph-paper-plane-right"></i> Enviar</button>
    </fieldset>
 </form>
 
