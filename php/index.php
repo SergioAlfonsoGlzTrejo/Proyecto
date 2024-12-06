@@ -1,6 +1,6 @@
 <?php
 // Conexión a la base de datos
-require_once 'db.php';
+require_once '../model/db.php';
 
 // Lógica para obtener productos de la base de datos (si lo deseas dinámico)
 $sql = "SELECT * FROM productos LIMIT 6";  // Ajusta esta consulta a tus necesidades
