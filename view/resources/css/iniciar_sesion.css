@@ -31,6 +31,7 @@ section.login {
 }
 
 section.login > article.form {
+   box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
    background-color: white;
    border-radius: 1rem;
    padding: 2rem;
@@ -119,6 +120,20 @@ nav a {
 a:hover {
    text-decoration: underline;
    color: #71b8ff;
+}
+
+i {
+   color: red; 
+   font-size: 20px;
+}
+
+article#error1 {
+   box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+   background-color: #ffeeee;
+   border-radius: 1rem;
+   padding: 1rem;
+   position: fixed;
+   top: 1.5rem;
 }
 
 footer.container {

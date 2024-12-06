@@ -3,8 +3,8 @@
 <?php include '../plantillas/header2.php'; ?>
 
 <?php if (isset($_GET) && $_GET['error']==1): ?>
-<article>
-   <i class="ph ph-x" style="color: red; font-size: 20px"></i> Correo o contraseña incorrectos
+<article id="error1">
+   <i class="ph ph-x"></i> Correo o contraseña incorrectos
 </article>
 <?php endif; ?>
 
