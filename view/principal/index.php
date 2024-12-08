@@ -21,9 +21,9 @@ $productos = $query->fetchAll(PDO::FETCH_ASSOC);
     <header>
         <h1>E-Shop 🛒</h1>
         <nav>
-            <ul>
+            <ul><!--Aqui para redirigir a las paginas  -->
                 <li><a href="#">Inicio</a></li>
-                <li><a href="catalago.php">Catálogo</a></li>
+                <li><a href="\php\catalago.php">Catálogo</a></li>
                 <li><a href="carrito.php">Carrito</a></li>
                 <li><a href="login.php">Iniciar Sesión</a></li>
             </ul>
