@@ -1,6 +1,6 @@
 <?php
 // Conexión a la base de datos
-require_once 'db.php';
+require_once "../model/db.php";
 
 // Obtener productos de la base de datos
 $sql = "SELECT * FROM productos";

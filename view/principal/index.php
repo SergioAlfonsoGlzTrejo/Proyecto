@@ -1,6 +1,6 @@
 <?php
 // Conexión a la base de datos
-require_once 'db.php';
+require_once "../../model/db.php";
 
 // Lógica para obtener productos de la base de datos (si lo deseas dinámico)
 $sql = "SELECT * FROM productos LIMIT 6";  // Ajusta esta consulta a tus necesidades
@@ -45,7 +45,7 @@ $productos = $query->fetchAll(PDO::FETCH_ASSOC);
         <div class="productos">
             <?php foreach ($productos as $producto): ?>
                 <div class="producto">
-                    <img src="productos/<?php echo $producto['imagen']; ?>" alt="<?php echo $producto['nombre']; ?>">
+                    <img width="100" src="<?php echo $producto['imagen']; ?>" alt="<?php echo $producto['nombre']; ?>">
                     <h3><?php echo $producto['nombre']; ?></h3>
                     <p>$<?php echo number_format($producto['precio'], 2); ?></p>
                     <button>Añadir al carrito</button>
