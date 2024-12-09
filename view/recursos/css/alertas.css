@@ -1,0 +1,47 @@
+article.error, article.ok, article.info, article.warning {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.5);
+   border-radius: 1rem;
+   padding: 1rem;
+   position: fixed;
+   top: 1.5rem;
+}
+
+article.error > i, article.ok > i, article.info > i, article.warning > i {
+   font-size: 32px;
+   margin-right: 0.5rem;
+}
+
+article.error > i {
+   color: red;
+}
+
+article.error {
+   background-color: #fee;
+}
+
+article.warning > i {
+   color: orange;
+}
+
+article.warning {
+   background-color: #ffb;
+}
+
+article.ok > i {
+   color: green;
+}
+
+article.ok {
+   background-color: #dfd;  
+}
+
+article.info > i {
+   color: royalblue;
+}
+
+article.info {
+   background-color: #cef;  
+}

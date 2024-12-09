@@ -14,8 +14,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   if ($user && password_verify($password, $user['password'])) {
     $_SESSION['user'] = $user;
-    header('Location: ../../view/principal/usuarios.php');
+    header('Location: ../../view/principal/index.php?ok=1');
   } else {
-    header('Location: ../../view/login/iniciar_sesion.php?error=1');
+    header('Location: ../../view/principal/login.php?error=1');
   }
 }

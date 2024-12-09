@@ -27,14 +27,15 @@
       // Guardar el usuario...
       try {
          $sql = "INSERT INTO usuarios (nombre, apellidos, fecha_nacimiento, correo, password) VALUES (:nombre, :apellidos, :fecha_nacimiento, :correo, :password)";
-         $query = $pdo->prepare($sql);
-         $query->execute([
+         $parametros = [
             ':nombre' => $nombre,
             ':apellidos' => $apellidos,
             ':fecha_nacimiento' => $fecha_nacimiento,
             ':correo' => $correo,
             ':password' => $password,
-         ]);
+         ];
+         $query = $pdo->prepare($sql);
+         $query->execute($parametros);
          header("Location: ../../view/principal/usuarios.php?ok=1");
          exit;
       } catch (PDOException $e) {

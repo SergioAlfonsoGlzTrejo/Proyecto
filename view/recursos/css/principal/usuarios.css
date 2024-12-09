@@ -1,0 +1,24 @@
+button.desactivado {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+button.desactivado span.tooltip {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    top: 100%;
+    left: 50%;
+    margin-left: -60px;
+    position: absolute;
+    z-index: 1;
+}
+
+button.desactivado:hover span.tooltip {
+    visibility: visible;
+}
