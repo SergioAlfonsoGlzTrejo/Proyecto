@@ -1,4 +1,4 @@
 <?php
 session_start();
 session_destroy();
-header('Location:../../view/login/iniciar_sesion.php');
+header('Location:../../view/principal/login.php?ok=1');

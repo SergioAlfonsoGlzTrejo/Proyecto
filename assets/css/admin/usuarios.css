@@ -1,0 +1,82 @@
+@import url('../general/common.css');
+@import url('../general/alertas.css');
+
+article.error, article.ok, article.info, article.warning {
+    float: inline-start;
+}
+
+main.container {
+    position: relative;
+    min-height: 80vh;
+    height: 100%;
+}
+
+div.overflow-auto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div.overflow-auto > section p {
+    font-size: 3rem;
+    font-weight: bold;
+    width: 12ch;
+    margin-bottom: 2rem;
+}
+
+div.overflow-auto > section a {
+    height: fit-content;
+    border-radius: 1rem;
+    padding: 1rem;
+    font-size: 1.2rem;
+    background-color: var(--colorBotonOk);
+    border: 1px solid var(--colorBotonOkHover);
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+div.overflow-auto > section a:hover {
+    background-color: var(--colorBotonOkHover);
+}
+
+table {
+    width: auto;
+    border-collapse: collapse;
+    border-radius: 1rem;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+th, td {
+    padding: 1rem;
+    text-align: left;
+}
+
+th {
+    background-color: #ddd;
+}
+
+th:last-child {
+    border-radius: 0 1rem 0 0;
+}
+
+th:first-child {
+    border-radius: 1rem 0 0 0;
+}
+
+td {
+    background-color: white;
+}
+
+tr:last-child td:last-child {
+    border-radius: 0 0 1rem 0;
+}
+
+tr:last-child td:first-child {
+    border-radius: 0 0 0 1rem;
+}
+
+td:has(p) {
+    display: flex;
+    color: #555;
+}

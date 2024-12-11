@@ -1,0 +1,91 @@
+@import url('../general/common.css');
+@import url('../general/alertas.css');
+
+main.container {
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+main.container > article {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+main.container > article > p.titulo {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+form div.form {
+    display: flex;
+    gap: 1rem;
+}
+
+fieldset {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    border: none;
+}
+
+input:not(.no) {
+    border: 2px solid var(--colorTerciario);
+    border-radius: 0.3rem;
+    height: 48px;
+    padding: 0 12px;
+    margin-bottom: 1rem;
+    font-size: 20px;
+    color: #222;
+    transition: all 0.3s ease;
+}
+
+input[type="file"]::after {
+    color: aqua;
+}
+
+input[type="file"]::file-selector-button {
+    background-color: var(--colorTerciario);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    margin-right: 1rem;
+    height: 40px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+input:focus:not(.no) {
+    background-color: color-mix(in srgb, var(--colorTerciario) 10%, white);
+}
+
+label {
+    font-size: 20px;
+}
+
+button {
+    background-color: var(--colorTerciario);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+    height: 48px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: var(--colorTerciarioPressed);
+}
