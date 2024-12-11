@@ -1,5 +1,5 @@
-@import url('common.css');
-@import url('alertas.css');
+@import url('../general/common.css');
+@import url('../general/alertas.css');
 
 section.login {
    display: flex;
@@ -46,20 +46,36 @@ fieldset {
 }
 
 input {
-   height: 32px;
-   padding: 0 8px;
+   border: 2px solid var(--colorTerciario);
+   border-radius: 0.3rem;
+   height: 48px;
+   padding: 0 12px;
+   font-size: 20px;
+   color: #222;
+   transition: all 0.3s ease;
+}
+
+input:focus {
+   background-color: color-mix(in srgb, var(--colorTerciario) 10%, white);
+}
+
+label {
+   font-size: 20px;
 }
 
 button {
-   background-color: #003264;
+   background-color: var(--colorTerciario);
    color: white;
    border: none;
    padding: 0.5rem 1rem;
    border-radius: 0.5rem;
+   margin-top: 1rem;
+   height: 48px;
+   font-size: 20px;
    cursor: pointer;
    transition: all 0.3s ease;
 }
 
 button:hover {
-   background-color: #001632;
+   background-color: var(--colorTerciarioPressed);
 }

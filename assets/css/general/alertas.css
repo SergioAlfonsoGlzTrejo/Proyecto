@@ -7,6 +7,7 @@ article.error, article.ok, article.info, article.warning {
    padding: 1rem;
    position: fixed;
    top: 1.5rem;
+   z-index: 10;
 }
 
 article.error > i, article.ok > i, article.info > i, article.warning > i {

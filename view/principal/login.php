@@ -1,6 +1,6 @@
 <?php session_start(); include '../plantillas/header.php'; ?>
-<link rel="stylesheet" href="../recursos/css/login.css">
-<script src="../recursos/js/alertas.js" defer></script>
+<link rel="stylesheet" href="../../assets/css/principal/login.css">
+<script src="../../assets/js/alertas.js" defer></script>
 <title><?= $titulo ?? "EkoBazar" ?></title>
 <?php include '../plantillas/nav-sencillo.php'; ?>
 </head>

@@ -2,15 +2,15 @@
 session_start();
 require_once "../../model/db.php";
 
-$sql = "SELECT * FROM productos LIMIT 12"; 
+$sql = "SELECT * FROM productos LIMIT 10"; 
 $query = $pdo->query($sql);
 $productos = $query->fetchAll(PDO::FETCH_ASSOC);
 
 include "../../view/plantillas/header.php";
 ?>
-<link rel="stylesheet" href="../recursos/css/index.css">
+<link rel="stylesheet" href="../../assets/css/principal/index.css">
 <title><?= $titulo ?? "EkoBazar" ?></title>
-<script src="../recursos/js/alertas.js" defer></script>
+<script src="../../assets/js/alertas.js" defer></script>
 <?php include '../plantillas/nav-index.php'; ?>
 </head>
 <body>
@@ -37,18 +37,30 @@ include "../../view/plantillas/header.php";
         </article>
     <?php endif; ?>
         <section class="banner">
-            <img src="banner.jpg" alt="Ofertas increíbles esta semana">
-            <div class="banner-text">
-                <h2>¡Ofertas increíbles esta semana!</h2>
-                <p>Encuentra los mejores precios en nuestros productos destacados.</p>
-            </div>
+            <img src="../../assets/img/banner.png" alt="Ofertas increíbles esta semana">
         </section>
-        <section class="productos-destacados">
-            <h2>Productos Destacados</h2>
+        <section class="principal">
+            <div class="promociones">
+                <div class="promocion">
+                    <i class="ph ph-seal-percent"></i>
+                    <div>
+                        <h2>¡Ofertas increíbles esta semana!</h2>
+                        <p>Encuentra los mejores precios en nuestros productos destacados.</p>
+                    </div>
+                </div>
+                <div class="promocion">
+                    <i class="ph ph-basket"></i>
+                    <div>
+                        <h2>!Llévate los mejores precios!</h2>
+                        <p>Encuentra los mejores precios en nuestros productos destacados.</p>
+                    </div>
+                </div>
+            </div>
             <div class="productos">
                 <?php foreach ($productos as $producto): ?>
                     <div class="producto">
-                        <img width="100" src="<?php echo $producto['imagen_url']; ?>" alt="<?php echo $producto['nombre']; ?>">
+                        <a class="boton" href="../../controller/carrito/agregar.php?producto_id=<?= $producto['id'] ?>"><i class="ph ph-shopping-cart"></i></a>
+                        <div class="img"><img src="<?php echo $producto['imagen_url']; ?>" alt="<?php echo $producto['nombre']; ?>"></div>
                         <div class="producto-info">
                             <h3><?= $producto['nombre'] ?></h3>
                             <p><strong>Marca:</strong> <?= $producto['marca'] ?? 'N/A' ?></p>
@@ -58,7 +70,6 @@ include "../../view/plantillas/header.php";
                                 <p><strong>Precio al mayoreo:</strong> $<?= $producto['precio_mayoreo'] ?></p>
                             <?php endif; ?>
                             <p><strong>Existencias:</strong> <?= $producto['stock'] ?? 'Sin stock disponible' ?></p>
-                            <a href="../../controller/carrito/agregar.php?producto_id=<?= $producto['id'] ?>" class="btn">Añadir al carrito</a>
                         </div>
                     </div>
                 <?php endforeach; ?>

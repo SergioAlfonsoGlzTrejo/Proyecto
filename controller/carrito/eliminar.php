@@ -6,12 +6,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $carrito_id = $_GET['carrito_id'] ?? null;
     $producto_id = $_GET['producto_id'] ?? null;
 
-    // Validar entradas
     if (!$carrito_id || !$producto_id) {
         header('Location: ../../view/principal/carrito.php?error=2');
     }
 
-    // Eliminar el producto del carrito
     $stmt = $pdo->prepare("DELETE FROM compras WHERE carrito_id = ? AND id = ?");
     $stmt->execute([$carrito_id, $producto_id]);
 

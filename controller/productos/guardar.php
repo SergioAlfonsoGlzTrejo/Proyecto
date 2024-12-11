@@ -10,7 +10,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $imagen_url = $_POST['imagen_url'] ?? null;
     $stock = $_POST['stock'] ?? null;
 
-    // Procesar archivo si se subió
     if (!empty($_FILES['archivo']['name'])) {
         $nombreArchivo = basename($_FILES['archivo']['name']);
         $rutaDestino = "../../uploads/" . $nombreArchivo;
@@ -21,7 +20,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     try {
         if (isset($_POST['id'])) {
-            // Actualizar producto
             $sql = "UPDATE productos SET nombre = :nombre, marca = :marca, descripcion = :descripcion, 
                     precio = :precio, precio_mayoreo = :precio_mayoreo, imagen_url = :imagen_url, stock = :stock
                     WHERE id = :id";
@@ -36,7 +34,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 'id' => $_POST['id']
             ];
         } else {
-            // Insertar nuevo producto
             $sql = "INSERT INTO productos (nombre, marca, descripcion, precio, precio_mayoreo, imagen_url, stock) 
                     VALUES (:nombre, :marca, :descripcion, :precio, :precio_mayoreo, :imagen_url, :stock)";
             $parametros = [
@@ -55,6 +52,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         die("Error: " . $e->getMessage());
     }
 
-    header("Location: ../../view/principal/productos.php?ok=1");
+    header("Location: ../../view/admin/productos.php?ok=1");
     exit();
 }

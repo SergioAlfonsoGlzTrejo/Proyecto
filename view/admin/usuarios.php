@@ -17,17 +17,15 @@
    
    include_once "../plantillas/header.php";
 ?>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.red.min.css">
-<link rel="stylesheet" href="../recursos/css/common.css">
+<link rel="stylesheet" href="../../assets/css/admin/usuarios.css">
+<script src="../../assets/js/alertas.js" defer></script>
 <title><?= $titulo ?? "EkoBazar" ?></title>
 <?php include '../plantillas/nav-sencillo.php'; ?>
 </head>
 <body>
 <main class="container">
-
+<a href="../admin/panel.php" role="button"><i class="ph ph-arrow-left"></i> Volver al panel de administración</a>
 <article>
-   <h2>Lista de usuarios</h2>
-   <a href="formulario.php" role="button">Nuevo usuario</a>
    <?php if(isset($_GET) && $_GET['ok']==1): ?>
       <article class="ok">
          <i class="ph ph-check"></i> Usuario creado con éxito
@@ -40,33 +38,31 @@
       <article class="ok">
          <i class="ph ph-check"></i> Usuario eliminado con éxito
       </article>
-   <?php elseif(isset($_GET)): ?>   
-      <article class="ok">
-         <i class="ph ph-check"></i> Sesión iniciada correctamente
-      </article>
    <?php endif; ?>
    <div class="overflow-auto">
+      <section>
+         <p>Lista de usuarios</p>
+         <a href="../formularios/usuarios.php?origen=admin" role="button">Nuevo usuario</a>
+      </section>
       <table class="table">
          <thead>
             <tr>
                <th>Nombre</th>
-               <th>Edad</th>
-               <th>Fecha de nacimiento</th>
                <th>Correo electrónico</th>
-               <th>Eliminar</th>
+               <th>Opciones</th>
             </tr>
          </thead>
          <tbody>
             <?php foreach ($items as $item): ?>
                <tr>
                   <td><?= $item['nombre'] ?></td>
-                  <td><?= $item['edad'] ?></td>
-                  <td><?= $item['fecha_nacimiento'] ?></td>
                   <td><?= $item['correo'] ?></td>
                   <td>
                      <?php if($item['rol']==='admin'): ?>
-                        <button class="desactivado" type="button" disabled><i class="ph ph-trash"></i> Eliminar</button>
+                        <p><i class="ph ph-pencil"></i> Editar</p>
+                        <p><i class="ph ph-trash"></i> Eliminar</p>
                      <?php else: ?>
+                        <a href="../../controller/usuarios/editar.php?id=<?= $item['id'] ?>" role="button"><i class="ph ph-pencil"></i> Editar</a>
                         <a href="../../controller/usuarios/eliminar.php?id=<?= $item['id'] ?>" role="button"><i class="ph ph-trash"></i> Eliminar</a>
                      <?php endif; ?>
                   </td>
@@ -76,3 +72,4 @@
       </table>
    </div>
 </article>
+<?php include_once "../plantillas/footer.php"?>
