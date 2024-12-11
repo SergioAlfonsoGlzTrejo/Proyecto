@@ -1,0 +1,77 @@
+@import url('../general/common.css');
+@import url('../general/alertas.css');
+
+main.container {
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+main.container > section:first-child {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10%;
+}
+
+p.titulo {
+    font-size: 3rem;
+    font-weight: bold;
+    width: 12ch;
+    margin-bottom: 1rem;
+}
+
+section.resumen-pago {
+    padding: 2rem;
+    width: 65%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    overflow: hidden;
+}
+
+section div.form-pago {
+   text-align: center;
+   width: fit-content;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   background-color: var(--colorAcento);
+   color: white;
+   font-size: 16px;
+   padding: 1rem;
+   border-radius: 1rem;
+   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+section div.form-pago p {
+   font-size: 1.5rem;
+   font-weight: bold;
+   margin-bottom: 0.5rem;
+}
+
+article.producto {
+   border: 1px solid var(--colorAcento);
+   border-radius: 1rem;
+   padding: 15px;
+   width: 100%;
+   max-width: 300px;
+   background-color: #fff;
+}
+
+form button {
+   font-size: 16px;
+   transition: all 0.3s ease;
+   background-color: var(--colorTerciario);
+   color: white;
+   border: none;
+   padding: 1rem;
+   border-radius: 0.5rem;
+   height: 48px;
+   width: fit-content;
+   cursor: pointer;
+}
+
+form button:hover {
+   background-color: var(--colorTerciarioHover);
+}
