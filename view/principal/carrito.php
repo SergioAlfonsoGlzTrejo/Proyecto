@@ -1,6 +1,6 @@
 <?php
 // Conexión a la base de datos
-require_once 'db.php';
+require_once "../../model/db.php";
 
 // Lógica para mostrar los productos del carrito
 // Aquí asumimos que los productos están almacenados en una tabla llamada "carrito" asociada al usuario
@@ -21,10 +21,19 @@ $carrito = $query->fetchAll(PDO::FETCH_ASSOC);
 </head>
 <body>
     <!-- Encabezado -->
-    <?php include 'view/plantillas/header.php'; ?>
+    <!--<?php include 'view/plantillas/header.php'; ?>-->
+    <nav>
+        <h1>E-Shop 🛒</h1>
+            <ul><!--Aqui para redirigir a las paginas  -->
+                <li><a href="#">Inicio</a></li>
+                <li><a href="\view\principal\catalago.php">Catálogo</a></li>
+                <li><a href="\view\login\iniciar_sesion.php">Iniciar Sesión</a></li>
+            </ul>
+        </nav>
 
     <!-- Contenido principal -->
     <main>
+   
         <h2>Carrito de Compras</h2>
         <?php if (empty($carrito)): ?>
             <p>Tu carrito está vacío. <a href="catalogo.php">Explora nuestros productos.</a></p>

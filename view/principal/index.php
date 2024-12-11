@@ -14,18 +14,18 @@ $productos = $query->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-Shop - Inicio</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/view/resources/css/index.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
     <!-- Encabezado -->
     <header>
-        <h1>E-Shop 🛒</h1>
         <nav>
+        <h1>E-Shop 🛒</h1>
             <ul><!--Aqui para redirigir a las paginas  -->
-                <li><a href="#">Inicio</a></li>
-                <li><a href="\php\catalago.php">Catálogo</a></li>
-                <li><a href="carrito.php">Carrito</a></li>
-                <li><a href="login.php">Iniciar Sesión</a></li>
+            <li><a href="/view/principal/catalago.php">Catálogo</a></li>
+            <li><a href="/view/principal/carrito.php">Carrito</a></li>
+            <li><a href="/view/login/iniciar_sesion.php">Iniciar Sesión</a></li>
             </ul>
         </nav>
     </header>

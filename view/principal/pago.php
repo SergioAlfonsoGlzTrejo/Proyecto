@@ -28,6 +28,15 @@ foreach ($carrito as $item) {
 <body>
     <!-- Encabezado -->
     <?php include 'view/plantillas/header.php'; ?>
+    <nav>
+        <h1>E-Shop 🛒</h1>
+            <ul><!--Aqui para redirigir a las paginas  -->
+                <li><a href="#">Inicio</a></li>
+                <li><a href="\view\principal\catalago.php">Catálogo</a></li>
+                <li><a href="view\principal\carrito.php">Carrito</a></li>
+                <li><a href="view\login\iniciar_sesion.php">Iniciar Sesión</a></li>
+            </ul>
+        </nav>
 
     <!-- Contenido principal -->
     <main>

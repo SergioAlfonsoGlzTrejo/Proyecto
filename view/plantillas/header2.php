@@ -16,6 +16,7 @@
          <li style="font-weight: bold;">Hola, <?= $_SESSION['user']['nombre'] . " " . $_SESSION['user']['apellidos']; ?> 👋</li>
          <li><a href="../../controller/login/logout.php">Cerrar sesión</a></li>
        <?php else: ?>
+        <li><a href="../../view/principal/index.php">inicio</a></li>
          <li><a href="../../view/login/iniciar_sesion.php">Iniciar sesión</a></li>
          <li><a href="../../view/principal/formulario.php">Regístrate</a></li>
        <?php endif; ?>

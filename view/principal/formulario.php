@@ -1,6 +1,6 @@
 <?php
    session_start();
-   include_once "../plantillas/header.php";
+   include_once "../plantillas/header2.php";
 ?>
 
 <?php if(isset($_GET) && $_GET['error']): ?>
