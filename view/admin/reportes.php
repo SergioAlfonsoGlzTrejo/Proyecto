@@ -21,44 +21,45 @@ include_once "../plantillas/header.php";
 <body>
 <main class="container">
     <a href="../admin/panel.php" role="button"><i class="ph ph-arrow-left"></i> Volver al panel de administración</a>
-    <p>Generar Reporte</p>
+    <p>Generar reporte</p>
     <form action="../../controller/reportes/generar.php" method="GET">
-        <div>
-            <fieldset>
-                <label for="fecha_inicio">Fecha Inicio:</label>
-                <input type="date" id="fecha_inicio" name="fecha_inicio">
-            </fieldset>
-            <fieldset>
-                <label for="fecha_fin">Fecha Fin:</label>
-                <input type="date" id="fecha_fin" name="fecha_fin">
-            </fieldset>
+        <div class="form">
+            <div>
+                <fieldset>
+                    <label for="fecha_inicio">Fecha inicial:</label>
+                    <input type="date" id="fecha_inicio" name="fecha_inicio">
+                </fieldset>
+                <fieldset>
+                    <label for="fecha_fin">Fecha final:</label>
+                    <input type="date" id="fecha_fin" name="fecha_fin">
+                </fieldset>
+            </div>
+            <div>
+                <fieldset>
+                    <label for="usuario_id">Usuario:</label>
+                    <select id="usuario_id" name="usuario_id">
+                        <option value="">Todos</option>
+                        <?php foreach ($usuarios as $usuario): ?>
+                            <option value="<?= $usuario['id'] ?>">
+                                <?= $usuario['nombre'] . ' ' . $usuario['apellidos'] ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                </fieldset>
+                <fieldset>
+                    <label for="producto_id">Producto:</label>
+                    <select id="producto_id" name="producto_id">
+                        <option value="">Todos</option>
+                        <?php foreach ($productos as $producto): ?>
+                            <option value="<?= $producto['id'] ?>">
+                                <?= $producto['id'] . '. ' . $producto['nombre'] ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                </fieldset>
+            </div>
         </div>
 
-        <div>
-            <fieldset>
-                <label for="usuario_id">Usuario:</label>
-                <select id="usuario_id" name="usuario_id">
-                    <option value="">Todos</option>
-                    <?php foreach ($usuarios as $usuario): ?>
-                        <option value="<?= $usuario['id'] ?>">
-                            <?= $usuario['nombre'] . ' ' . $usuario['apellidos'] ?>
-                        </option>
-                    <?php endforeach; ?>
-                </select>
-            </fieldset>
-            <fieldset>
-                <label for="producto_id">Producto:</label>
-                <select id="producto_id" name="producto_id">
-                    <option value="">Todos</option>
-                    <?php foreach ($productos as $producto): ?>
-                        <option value="<?= $producto['id'] ?>">
-                            <?= $producto['id'] . '. ' . $producto['nombre'] ?>
-                        </option>
-                    <?php endforeach; ?>
-                </select>
-            </fieldset>
-        </div>
-
-        <button type="submit">Generar Reporte</button>
+        <button type="submit">Generar reporte</button>
     </form>
 <?php include_once "../plantillas/footer.php"; ?>

@@ -1,20 +1,33 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reporte de Pagos y Ventas</title>
+<?php
+session_start();
+require_once "../../model/db.php";
+
+if (!isset($_SESSION['user'])) {
+    header('Location: ../principal/login.php?info=1');
+} elseif ($_SESSION['user']['rol'] !== 'admin') {
+    header('Location: ../principal/index.php?warning=1');
+}
+
+include_once "../../view/plantillas/header.php";
+?>
+<link rel="stylesheet" href="../../assets/css/admin/reporte_generado.css">
+<script src="../../assets/js/alertas.js" defer></script>
+<title><?= $titulo ?? "EkoBazar" ?></title>
+<?php include '../../view/plantillas/nav-sencillo.php'; ?>
 </head>
 <body>
-    <h1>Reporte de Pagos y Ventas</h1>
-    <table border="1">
+    <main class="container">
+    <a href="../../view/admin/reportes.php" role="button"><i class="ph ph-arrow-left"></i> Volver a los filtros</a>
+    <a class="a2" href="../../view/principal/index.php" role="button"><i class="ph ph-house"></i> Volver al inicio</a>
+    <p>Reporte generado</p>
+    <table>
         <thead>
             <tr>
-                <th>Fecha de Pago</th>
+                <th>Fecha de pago</th>
                 <th>Usuario</th>
                 <th>Producto</th>
                 <th>Cantidad</th>
-                <th>Precio Unitario</th>
+                <th>Precio unitario</th>
                 <th>Total</th>
             </tr>
         </thead>
@@ -37,7 +50,4 @@
             <?php endif; ?>
         </tbody>
     </table>
-
-    <a href="reportes.php">Volver a los filtros</a>
-</body>
-</html>
+<?php include_once "../../view/plantillas/footer.php"; ?>

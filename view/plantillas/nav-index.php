@@ -1,5 +1,7 @@
 <nav>
-   <h1><?= $titulo ?? "EkoBazar" ?></h1>
+   <a href="../../view/principal/index.php">
+      <h1><?= $titulo ?? "EkoBazar" ?></h1>
+   </a>
    <ul> 
       <?php if (!isset($_SESSION['user'])): ?>
          <li><a href="../../view/principal/login.php">Iniciar sesión</a></li>

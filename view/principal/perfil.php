@@ -20,21 +20,26 @@ if (!$usuario) {
 
 include_once "../plantillas/header.php";
 ?>
-    <title>Perfil de Usuario</title>
-    <link rel="stylesheet" href="../recursos/css/perfil.css">
+<title>Perfil</title>
+<link rel="stylesheet" href="../../assets/css/principal/perfil.css">
+<script src="../../assets/js/alertas.js" defer></script>
+<?php include '../plantillas/nav-sencillo.php'; ?>
 </head>
 <body>
     <main class="container">
+    <i class="ph ph-user"></i>
+    <a href="../principal/index.php" role="button"><i class="ph ph-arrow-left"></i> Volver al inicio</a>
     <?php include "../plantillas/header.php"; ?>
     <div class="perfil-container">
-        <h1>Mi Perfil</h1>
+        <p class="titulo">Mi perfil</p>
         <div class="perfil-card">
             <p><strong>Nombre:</strong> <?= $usuario['nombre'] . ' ' . $usuario['apellidos'] ?></p>
             <p><strong>Correo:</strong> <?= $usuario['correo'] ?></p>
             <p><strong>Teléfono:</strong> <?= $usuario['telefono'] ?: "No especificado" ?></p>
             <p><strong>Dirección:</strong> <?= $usuario['direccion'] ?: "No especificado" ?></p>
-            <p><strong>Fecha de Nacimiento:</strong> <?= $usuario['fecha_nacimiento'] ?></p>
+            <p><strong>Fecha de nacimiento:</strong> <?= $usuario['fecha_nacimiento'] ?></p>
+            <p><strong>Edad:</strong> <?= date_diff(date_create($usuario['fecha_nacimiento']), date_create('now'))->y ?> años</p>
+            <p><strong>Rol:</strong> <?= $_SESSION['user']['rol'] ?></p>
         </div>
-        <a href="../principal/index.php" class="btn-regresar">Volver al inicio</a>
     </div>
 <?php include "../plantillas/footer.php"; ?>

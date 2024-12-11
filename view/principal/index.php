@@ -2,7 +2,7 @@
 session_start();
 require_once "../../model/db.php";
 
-$sql = "SELECT * FROM productos LIMIT 15"; 
+$sql = "SELECT * FROM productos LIMIT 21"; 
 $query = $pdo->query($sql);
 $productos = $query->fetchAll(PDO::FETCH_ASSOC);
 

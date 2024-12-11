@@ -60,13 +60,16 @@ main.container {
 
 main.container > a {
    position: absolute;
-   top: 1rem;
-   left: 1rem;
    height: auto;
+   top: 1rem;
    background-color: white;
    padding: 1rem;
    border-radius: 1rem;
    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+main.container > a:not(.a2) {
+   left: 1rem;
 }
 
 nav > ul {
