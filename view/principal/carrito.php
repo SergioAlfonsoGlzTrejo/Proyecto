@@ -52,9 +52,29 @@ include_once "../plantillas/header.php";
 <main class="container">
     <a class="atras" href="index.php" role="button"><i class="ph ph-arrow-left"></i> Volver al catálogo</a>
 
-    <?php if (isset($_GET) && $_GET['error']==1): ?>
+    <?php if (isset($_GET) && $_GET['ok']==1): ?>
+        <article id="ok1" class="ok">
+            <i class="ph ph-check"></i> Producto añadido al carrito
+        </article>
+    <?php elseif (isset($_GET) && $_GET['ok']==2): ?>
+        <article id="ok2" class="ok">
+            <i class="ph ph-check"></i> Cantidad actualizada correctamente
+        </article>
+    <?php elseif (isset($_GET) && $_GET['ok']==3): ?>
+        <article id="ok3" class="ok">
+            <i class="ph ph-check"></i> Producto eliminado del carrito
+        </article>
+    <?php elseif (isset($_GET) && $_GET['error']==1): ?>
         <article id="error1" class="error">
-            <i class="ph ph-alert-circle-exc"></i> Error al actualizar el carrito
+            <i class="ph ph-x"></i> Error al actualizar el carrito
+        </article>
+    <?php elseif (isset($_GET) && $_GET['error']==2): ?>
+        <article id="error2" class="error">
+            <i class="ph ph-x"></i> Error al actualizar el carrito
+        </article>
+    <?php elseif (isset($_GET) && $_GET['error']==3): ?>
+        <article id="error3" class="error">
+            <i class="ph ph-x"></i> No hay suficiente stock para ese producto
         </article>
     <?php elseif (isset($_GET) && $_GET['warning']==1): ?>
         <article id="warning1" class="warning">

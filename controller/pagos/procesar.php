@@ -25,6 +25,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt = $pdo->prepare("UPDATE carritos SET pago_id = ? WHERE id = ?");
         $stmt->execute([$pago_id, $carrito_id]);
 
+        $stmt = $pdo->prepare("
+            SELECT producto_id, cantidad 
+            FROM compras 
+            WHERE carrito_id = ?
+        ");
+        $stmt->execute([$carrito_id]);
+        $productos_en_carrito = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            
+        foreach ($productos_en_carrito as $producto) {
+            $stmt = $pdo->prepare("UPDATE productos SET stock = stock - ? WHERE id = ?");
+            $stmt->execute([$producto['cantidad'], $producto['producto_id']]);
+        }
+
         $stmt = $pdo->prepare("DELETE FROM compras WHERE carrito_id = ?");
         $stmt->execute([$carrito_id]);
 

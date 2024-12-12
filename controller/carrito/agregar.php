@@ -10,6 +10,15 @@ require_once "../../model/db.php";
 $producto_id = $_GET['producto_id'];
 $cantidad = 1;
 
+$stmt = $pdo->prepare("SELECT stock FROM productos WHERE id = ?");
+$stmt->execute([$producto_id]);
+$producto = $stmt->fetch(PDO::FETCH_ASSOC);
+
+if (!$producto || $producto['stock'] <= 0) {
+    header('Location: ../../view/principal/index.php?warning=2');
+    exit;
+}
+
 $stmt = $pdo->prepare("SELECT id FROM carritos WHERE usuario_id = ? AND pago_id IS NULL");
 $stmt->execute([$_SESSION['user']['id']]);
 $carrito = $stmt->fetch(PDO::FETCH_ASSOC);
