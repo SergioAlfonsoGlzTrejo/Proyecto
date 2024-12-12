@@ -26,6 +26,10 @@
    <article id="error3" class="error">
       <i class="ph ph-x"></i> El correo electrónico no es válido
    </article>
+<?php elseif(isset($_GET) && $_GET['info']==1): ?>
+   <article id="info1" class="info">
+      <i class="ph ph-info"></i> Operación cancelada
+   </article>
 <?php endif; ?>
 
 <h2 style="text-align: center;">

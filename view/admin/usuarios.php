@@ -38,6 +38,14 @@
       <article class="ok">
          <i class="ph ph-check"></i> Usuario eliminado con éxito
       </article>
+   <?php elseif(isset($_GET) && $_GET['error']==1): ?>
+      <article class="error">
+         <i class="ph ph-x"></i> Ocurrió un error al crear el usuario
+      </article>
+   <?php elseif(isset($_GET) && $_GET['info']==1): ?>
+      <article id="info1" class="info">
+         <i class="ph ph-info"></i> Operación cancelada
+      </article>
    <?php endif; ?>
    <div class="overflow-auto">
       <section>
@@ -62,7 +70,7 @@
                         <p><i class="ph ph-pencil"></i> Editar</p>
                         <p><i class="ph ph-trash"></i> Eliminar</p>
                      <?php else: ?>
-                        <a href="../../controller/usuarios/editar.php?id=<?= $item['id'] ?>" role="button"><i class="ph ph-pencil"></i> Editar</a>
+                        <a href="../../view/formularios/editar_usuarios.php?id=<?= $item['id'] ?>" role="button"><i class="ph ph-pencil"></i> Editar</a>
                         <a href="../../controller/usuarios/eliminar.php?id=<?= $item['id'] ?>" role="button"><i class="ph ph-trash"></i> Eliminar</a>
                      <?php endif; ?>
                   </td>

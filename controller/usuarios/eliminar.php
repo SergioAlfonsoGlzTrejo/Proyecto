@@ -7,4 +7,4 @@ if (isset($_GET['id'])){
    $query->execute(array($_GET['id']));
 }
 
-header("Location: ../../view/principal/usuarios.php?ok=3");
+header("Location: ../../view/admin/usuarios.php?ok=3");

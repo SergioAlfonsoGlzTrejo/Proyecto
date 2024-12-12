@@ -53,7 +53,7 @@
          ];
          $query = $pdo->prepare($sql);
          $query->execute($parametros);
-         header("Location: ../../view/principal/usuarios.php?ok=1");
+         header("Location: ../../view/admin/usuarios.php?ok=1");
          exit;
       } catch (PDOException $e) {
          die("Error al guardar el usuario: " . $e->getMessage());

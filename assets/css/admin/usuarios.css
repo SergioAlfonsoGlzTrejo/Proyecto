@@ -2,7 +2,7 @@
 @import url('../general/alertas.css');
 
 article.error, article.ok, article.info, article.warning {
-    float: inline-start;
+    translate:calc(100% - 8vw);
 }
 
 main.container {

@@ -33,6 +33,7 @@ include_once "../plantillas/header.php";
 </head>
 <body>
 <main class="container">
+    <a href="../principal/carrito.php" role="button"><i class="ph ph-arrow-left"></i> Volver al carrito</a>
     <section>
         <p class="titulo">Confirmación de compra</p>
         <div class="form-pago">
