@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once "../../model/db.php";
+
 if (!isset($_SESSION['user'])) {
     header('Location: login.php?info=1');
     exit;
@@ -8,7 +9,16 @@ if (!isset($_SESSION['user'])) {
 
 $usuario_id = $_SESSION['user']['id'];
 $stmt = $pdo->prepare("
-    SELECT c.id AS carrito_id, p.id AS producto_id, p.nombre, p.precio, co.cantidad, (p.precio * co.cantidad) AS subtotal
+    SELECT c.id AS carrito_id, 
+           p.id AS producto_id, 
+           p.nombre, 
+           p.precio, 
+           p.precio_mayoreo, 
+           co.cantidad, 
+           (CASE 
+               WHEN co.cantidad >= 5 THEN p.precio_mayoreo * co.cantidad 
+               ELSE p.precio * co.cantidad 
+           END) AS subtotal
     FROM carritos c
     JOIN compras co ON c.id = co.carrito_id
     JOIN productos p ON co.producto_id = p.id
@@ -18,10 +28,11 @@ $stmt->execute([$usuario_id]);
 $productos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 if (empty($productos)) {
-    echo "<p>No hay productos en el carrito para pagar.</p>";
+    echo "<p>No hay productos en el carrito para pagar</p>";
     exit;
 }
 
+// Calcula el total usando los subtotales ajustados
 $total = array_sum(array_column($productos, 'subtotal'));
 
 include_once "../plantillas/header.php";
@@ -49,7 +60,10 @@ include_once "../plantillas/header.php";
         <?php foreach ($productos as $producto): ?>
             <article class="producto">
                 <h2><?= $producto['nombre'] ?></h2>
-                <p>Precio: $<?= number_format($producto['precio'], 2) ?></p>
+                <p>Precio: $<?= number_format(
+                    $producto['cantidad'] >= 5 ? $producto['precio_mayoreo'] : $producto['precio'], 
+                    2
+                ) ?></p>
                 <p>Cantidad: <?= $producto['cantidad'] ?></p>
                 <p>Subtotal: $<?= number_format($producto['subtotal'], 2) ?></p>
             </article>

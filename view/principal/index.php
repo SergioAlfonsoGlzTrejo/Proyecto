@@ -35,6 +35,10 @@ include "../../view/plantillas/header.php";
         <article id="warning1" class="warning">
             <i class="ph ph-warning"></i> No tienes permiso para acceder a ese contenido
         </article>
+    <?php elseif (isset($_GET) && $_GET['warning']==2): ?>
+        <article id="warning2" class="warning">
+            <i class="ph ph-warning"></i> Producto no disponible
+        </article>
     <?php endif; ?>
         <section class="banner">
             <img src="../../assets/img/banner.png" alt="Ofertas increíbles esta semana">
@@ -59,7 +63,7 @@ include "../../view/plantillas/header.php";
             <div class="productos">
                 <?php foreach ($productos as $producto): ?>
                     <div class="producto">
-                        <a class="boton" href="../../controller/carrito/agregar.php?producto_id=<?= $producto['id'] ?>"><i class="ph ph-shopping-cart"></i></a>
+                        <a class="boton" <?= $producto['stock'] <= 0 ? 'disabled' : '' ?> href="../../controller/carrito/agregar.php?producto_id=<?= $producto['id'] ?>"><i class="ph ph-shopping-cart"></i></a>
                         <div class="img"><img src="<?php echo $producto['imagen_url']; ?>" alt="<?php echo $producto['nombre']; ?>"></div>
                         <div class="producto-info">
                             <h3><?= $producto['nombre'] ?></h3>
